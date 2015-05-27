@@ -1,0 +1,8 @@
+{
+  "name": "smartphone-controller-pong",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "4.x",
+    "socket.io": "^1.3.5"
+  }
+}

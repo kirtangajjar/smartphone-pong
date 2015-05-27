@@ -1,0 +1,18 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "express/express.d.ts": {
+      "commit": "da9a725d01fa39776a410ec5c518df10b5b3911e"
+    },
+    "node/node.d.ts": {
+      "commit": "da9a725d01fa39776a410ec5c518df10b5b3911e"
+    },
+    "socket.io/socket.io.d.ts": {
+      "commit": "da9a725d01fa39776a410ec5c518df10b5b3911e"
+    }
+  }
+}
