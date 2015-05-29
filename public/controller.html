@@ -3,6 +3,13 @@
 	<title>Smartphone Controller</title>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
+		var host_id = window.location.href.split('/')[3];
+		var io = io.connect();
+		
+		io.on('connect', function(){
+			io.emit('controller_connect', host_id);
+			document.body.innerText = io.id;
+		});
 	</script>
 </head>
 <body>

@@ -26,6 +26,13 @@ app.get('/:game_id/:controller_id', function(req, res) {
 	res.sendFile(__dirname + "/public/controller.html");
 });
 
+io.on('connection', function(socket) {
+	socket.on('controller_connect', function(game_host){
+		socket.broadcast.to(game_host).emit('controller_connected', socket.id);
+		console.log('controller connected to game host ' + game_host);
+	});
+});
+
 server.listen(8080, function(){
 	console.log("Server up and running");
 });
