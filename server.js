@@ -14,19 +14,17 @@ var express = require("express"),
 	server 	= require("http").Server(app),
 	io		= require("socket.io")(server);
 
+// The game host will be connecting here
+// send them index.html
 app.get('/', function(req, res) {
-	res.sendFile(__dirname + "/index.html")
+	res.sendFile(__dirname + "/public/index.html");
 });
 
-io.on('connection', function(socket) {
-	console.log('A client has been connected');
-
-	socket.on('init', function(){
-		console.log('Initializing game');
-	});	
+//The controllers will be connecting here
+// send them controller.html
+app.get('/:game_id/:controller_id', function(req, res) {
+	res.sendFile(__dirname + "/public/controller.html");
 });
-
-
 
 server.listen(8080, function(){
 	console.log("Server up and running");
