@@ -1,0 +1,27 @@
+//This file deals with an ideal workflow to the game.
+ 
+First of all, on connection to /, server will return
+index.html. 
+
+A script on index will connect to server via socket.io. 
+server, on connection will emit 'game_init' event 
+with two random numbers, which will instruct 
+the client(index.html) to initialize game with 
+two random numbers meant for two controllers. 
+
+A QR Code will be generated in format 
+www.example.com/game_id/controller_id. 'game_id' will 
+be current socket id(of index.html), and'controller_id' 
+will be two random numbers returned by server.
+
+When the controllers connect, they will connect on 
+/game_id/controller_id. Each time they will conect, 
+they will emit 'controller_connected' event to 
+index.html, which will turn the player status to ready, 
+and also register the corrosponding socket_id from which
+connection is coming. 
+
+Whenever the player will slide their fingers, it will 
+send 'goLeft' and 'goRight' event. server will send 
+this event to index.html, which will move the paddle
+on the basis of socket_id which requested it. 
