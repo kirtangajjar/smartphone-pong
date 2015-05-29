@@ -37,10 +37,15 @@
 			var player1 = new Player();
 			var player2 = new Player();
 			
-			//Create two 
+			//Create two QR codes
 			player1.appendQRCode("player1_qr");
 			player2.appendQRCode("player2_qr");
+			
+			document.getElementById("player1_status").innerText = io.id + '/' + player1.rand_no;
 		
+			io.on('controller_connected', function(controller_id) {
+				alert('controller connected with id: ' + controller_id);
+			});
 		});
 	</script>
 </head>
