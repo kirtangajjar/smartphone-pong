@@ -36,6 +36,12 @@
 					}
 				};
 				
+				//TODO: Replace it with canvas code 
+				//to actually move the paddle
+				this.move = function(direction) {
+					alert(this.name + " should move " + direction)
+				}
+				
 				// Function to create and append a QR code.
 				// Takes div as argument.
 				this.appendQRCode = function(div) {
@@ -67,6 +73,16 @@
 					player2.socket_id = controller_socket_id;
 					player2.ready(true);
 				}
+				
+				io.on('move', function(direction, controller_id) {
+					if(player1.id === controller_id ){
+						player1.move(direction);
+					}
+					
+					else if(player2.id === controller_id ){
+						player2.move(direction);
+					}
+				});
 			});
 			
 			io.on('controller_disconnect', function(controller_socket_id){

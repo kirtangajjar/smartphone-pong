@@ -33,6 +33,10 @@ io.on('connection', function(socket) {
 	socket.on('controller_connect', function(game_host, controller_id){
 		socket.broadcast.to(game_host).emit('controller_connected', socket.id, controller_id);
 		
+		socket.on('move', function(direction, game_host, controller_id) {
+			socket.broadcast.to(game_host).emit('move', direction, controller_id);
+		});
+		
 		//When Controller disconnects
 		//Inform game host about it
 		socket.on('disconnect', function() {
