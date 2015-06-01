@@ -27,9 +27,18 @@ app.get('/:game_id/:controller_id', function(req, res) {
 });
 
 io.on('connection', function(socket) {
-	socket.on('controller_connect', function(game_host){
-		socket.broadcast.to(game_host).emit('controller_connected', socket.id);
-		console.log('controller connected to game host ' + game_host);
+	
+	//On connection of controller(mobile)
+	//Inform the game host about it
+	socket.on('controller_connect', function(game_host, controller_rand_no){
+
+		socket.broadcast.to(game_host).emit('controller_connected', socket.id, controller_rand_no);
+		
+		//When Controller disconnects
+		//Inform game host about it
+		socket.on('disconnect', function() {
+			socket.broadcast.to(game_host).emit('controller_disconnect', socket.id);
+		});
 	});
 });
 
