@@ -27,11 +27,11 @@
 				
 				this.ready = function(value) {
 					
-					if(value == true){
+					if(value === true){
 						document.getElementById(this.name + "_status").innerText = "Connected";
 					}
 					
-					else if(value == false){
+					else if(value === false){
 						document.getElementById(this.name + "_status").innerText = "Disconnected";
 					}
 				};
@@ -58,12 +58,12 @@
 			
 			io.on('controller_connected', function(controller_socket_id, controller_id) {
 				
-				if(player1.id == controller_id){
+				if(player1.id === controller_id){
 					player1.socket_id = controller_socket_id;
 					player1.ready(true);
 				}
 				
-				else if(player2.id == controller_id){
+				else if(player2.id === controller_id){
 					player2.socket_id = controller_socket_id;
 					player2.ready(true);
 				}
@@ -71,11 +71,11 @@
 			
 			io.on('controller_disconnect', function(controller_socket_id){
 				
-				if(player1.socket_id == controller_socket_id){
+				if(player1.socket_id === controller_socket_id){
 					player1.ready(true);
 				}
 				
-				if(player2.socket_id == controller_socket_id){
+				if(player2.socket_id === controller_socket_id){
 					player2.ready(false);
 				}
 			});
