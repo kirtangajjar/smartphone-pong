@@ -30,9 +30,8 @@ io.on('connection', function(socket) {
 	
 	//On connection of controller(mobile)
 	//Inform the game host about it
-	socket.on('controller_connect', function(game_host, controller_rand_no){
-
-		socket.broadcast.to(game_host).emit('controller_connected', socket.id, controller_rand_no);
+	socket.on('controller_connect', function(game_host, controller_id){
+		socket.broadcast.to(game_host).emit('controller_connected', socket.id, controller_id);
 		
 		//When Controller disconnects
 		//Inform game host about it
