@@ -9,25 +9,17 @@
 		
 		io.on('connect', function(){
 			io.emit('controller_connect', host_id, controller_id);
-			document.body.innerText = io.id;
 		});
 		
 		//To movethe paddle
-		document.addEventListener('keydown', function(event) {
-	    
-		
-		if(event.keyCode == 37) {
-		    io.emit('move','left', host_id, controller_id);
-    	}
-		
-    	else if(event.keyCode == 39) {
-        	io.emit('move','right', host_id, controller_id);
-    	}
-});
-
+		window.addEventListener('load', function(){
+			document.addEventListener('touchmove', function(e) {
+				io.emit('move',e.changedTouches[0].pageX*100/window.innerWidth, host_id, controller_id);
+			});
+		});
 	</script>
 </head>
 <body>
-	Hello World
+	
 </body>
 </html>
