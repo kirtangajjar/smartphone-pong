@@ -14,6 +14,8 @@ var express = require("express"),
 	server 	= require("http").Server(app),
 	io		= require("socket.io")(server);
 
+app.use(express.static('public'));
+
 // The game host will be connecting here
 // send them index.html
 app.get('/', function(req, res) {
@@ -29,12 +31,13 @@ app.get('/:game_id/:controller_id', function(req, res) {
 io.on('connection', function(socket) {
 	
 	//On connection of controller(mobile)
-	//Inform the game host about it
+	//Inform the game host(pc) about it
 	socket.on('controller_connect', function(game_host, controller_id){
 		socket.broadcast.to(game_host).emit('controller_connected', socket.id, controller_id);
 		
 		socket.on('move', function(direction, game_host, controller_id) {
 			socket.broadcast.to(game_host).emit('move', direction, controller_id);
+			console.log(direction);
 		});
 		
 		//When Controller disconnects
