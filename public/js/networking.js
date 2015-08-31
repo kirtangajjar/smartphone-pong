@@ -1,3 +1,6 @@
+//TODO: Remove QR code when connected
+//TODO: Remove debug co-ordinates.
+
 var io = io.connect();
 
 io.on('connect', function() {
@@ -47,7 +50,6 @@ io.on('connect', function() {
 	
 	io.on('controller_connected', function(controller_socket_id, controller_id) {
 		
-		//TODO: Remove QR code when connected
 		if(player1.id === controller_id){
 			player1.socket_id = controller_socket_id;
 			player1.ready(true);

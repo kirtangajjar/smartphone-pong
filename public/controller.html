@@ -3,6 +3,7 @@
 	<title>Smartphone Controller</title>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
+		//TODO: Ensure value above 100 and below 0 are never sent.
 		var host_id = window.location.href.split('/')[3];
 		var controller_id = window.location.href.split('/')[4];
 		var io = io.connect();

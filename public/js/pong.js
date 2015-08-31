@@ -1,3 +1,8 @@
+//TODO: Ensure value above 100 and below 0 are never acknowledged in updatePaddle.
+//TODO: Ensure paddle and wall do not collide.
+//TODO: Update updatePaddle to update both paddles as requested.
+//Optional: Handle Window size change gracefully.
+
 window.onload = function(){	
 	
 	var Engine = Matter.Engine,
